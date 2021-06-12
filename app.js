@@ -5,14 +5,14 @@ const sqlite3 = require("sqlite3");
 
 const app = express();
 app.use(express.json());
-const dbPath = path.join(__dirname, "todoApplication.db");
+const databasePath = path.join(__dirname, "todoApplication.db");
 
-let db = null;
+let database = null;
 
 const initializeDBAndServer = async () => {
   try {
-    db = await open({
-      filename: dbPath,
+    database = await open({
+      filename: databasePath,
       driver: sqlite3.Database,
     });
     app.listen(3000, () => {
